@@ -1,0 +1,10 @@
+.point-of-delivery {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 50%;
+    position: absolute;
+    color: black;
+    cursor: pointer;
+}
