@@ -20,14 +20,14 @@
 }
 
 .modal-new__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   border-radius: 5px;
   background-color: #fff;
   color: black;
   width: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .modal-new__content h3 {

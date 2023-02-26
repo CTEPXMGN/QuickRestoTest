@@ -8,7 +8,6 @@ const NewClientModal = ({
   newClientCoords,
   clientsData,
   setClientsData,
-  //   modalData,
 }) => {
   const [inputName, setInputName] = useState('');
   const [inputAmount, setInputAmount] = useState('');
@@ -19,8 +18,11 @@ const NewClientModal = ({
         ...{ name: inputName, amount: inputAmount },
         ...newClientCoords,
       };
-      setClientsData([...clientsData, newClient]);
-      saveClientsData([...clientsData, newClient]);
+      // console.log(newClient);
+      const newClientsData = [...clientsData, newClient];
+      // console.log(newClientsData);
+      setClientsData(newClientsData);
+      saveClientsData(newClientsData);
     } else {
       alert('Заполните все поля');
     }
@@ -45,7 +47,7 @@ const NewClientModal = ({
       >
         <h3>Новый клиент</h3>
         <p>
-          Имя:{' '}
+          Имя:
           <input
             type={'text'}
             onChange={(event) => {
@@ -53,9 +55,8 @@ const NewClientModal = ({
             }}
           />
         </p>
-
         <p>
-          Кол-во:{' '}
+          Кол-во:
           <input
             type={'number'}
             onChange={(event) => {

@@ -1,15 +1,12 @@
 import './clients.css';
-import data from '../../../data_file/model.json';
 import { nanoid } from 'nanoid';
-
-// console.log(data);
 
 function id() {
   return nanoid();
 }
 
 function deliveryDetails(amount, name) {
-  console.log(amount, name);
+  // console.log(amount, name);
 }
 
 const Clients = ({ setModalActive, setModalData, clientsData }) => {
@@ -27,7 +24,9 @@ const Clients = ({ setModalActive, setModalData, clientsData }) => {
       ></div>
     );
   });
-  return <div>{dataOfDelivery}</div>;
+
+  // console.log(dataOfDelivery);
+  return <>{dataOfDelivery}</>;
 };
 
 export default Clients;

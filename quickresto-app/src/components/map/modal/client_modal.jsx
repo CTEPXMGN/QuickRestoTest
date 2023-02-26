@@ -1,5 +1,6 @@
 import './client_modal.css';
 import { saveClientsData } from '../../../storage';
+import { useState } from 'react';
 
 const ClientModal = ({
   modalActive,
@@ -8,6 +9,8 @@ const ClientModal = ({
   clientsData,
   setClientsData,
 }) => {
+  const [isEdit, setIsEdit] = useState(false);
+
   function removeClient(name) {
     const newModalData = clientsData.filter((item) => item.name != name);
     setClientsData(newModalData);

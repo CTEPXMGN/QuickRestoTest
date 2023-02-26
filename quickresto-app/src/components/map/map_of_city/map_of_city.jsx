@@ -4,7 +4,7 @@ import data from '../../../data_file/model.json';
 import Clients from '../clients/clients';
 import ClientModal from '../modal/client_modal';
 import NewClientModal from '../new_client_modal/new_client_modal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   removeUser,
   saveClientsData,
@@ -14,7 +14,7 @@ import {
 
 saveClientsData(hasCLientData() ? getClientsData() : data);
 
-console.log(getClientsData());
+// console.log(getClientsData());
 
 const MapOfCity = ({ setIsAuth }) => {
   const [modalActive, setModalActive] = useState(false);
@@ -23,20 +23,29 @@ const MapOfCity = ({ setIsAuth }) => {
   const [clientsData, setClientsData] = useState(getClientsData());
   const [newClientCoords, setNewClientCoords] = useState({});
 
+  useEffect(() => {
+    // console.log(clientsData);
+  });
+
   function getNewClientCoords(event) {
     const leftCoordinate =
-      (event.clientX - event.target.parentNode.offsetLeft) / 10;
+      (event.pageX - event.target.parentNode.offsetLeft) / 10;
     const topCoordinate =
-      (event.clientY - event.target.parentNode.offsetTop) / 10;
+      (event.pageY - event.target.parentNode.offsetTop) / 10;
+
+    console.log(leftCoordinate, topCoordinate);
     setNewModalActive(true);
     setNewClientCoords({
       ...newClientCoords,
-      ...{ x: topCoordinate, y: leftCoordinate },
+      ...{ y: topCoordinate, x: leftCoordinate },
     });
   }
 
   return (
-    <div className="map-container">
+    <div
+      className="map-container"
+      onDoubleClick={(event) => getNewClientCoords(event)}
+    >
       <button
         className="out-button"
         onClick={() => {
@@ -52,18 +61,21 @@ const MapOfCity = ({ setIsAuth }) => {
           saveClientsData(data);
         }}
       >
-        Сброить изменения
+        Сброcить изменения
       </button>
       <Clients
         setModalActive={setModalActive}
         setModalData={setModalData}
         clientsData={clientsData}
       />
-      <img
+      {/* <img
         src={map}
         className="map-img"
         onDoubleClick={(event) => getNewClientCoords(event)}
-      />
+        onClick={(e) => {
+          console.log(e.clientX, e.clientY, e.pageX, e.pageY);
+        }}
+      /> */}
       <ClientModal
         modalActive={modalActive}
         setModalActive={setModalActive}
