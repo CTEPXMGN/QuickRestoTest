@@ -28,10 +28,8 @@ const MapOfCity = ({ setIsAuth }) => {
   });
 
   function getNewClientCoords(event) {
-    const leftCoordinate =
-      (event.pageX - event.target.parentNode.offsetLeft) / 10;
-    const topCoordinate =
-      (event.pageY - event.target.parentNode.offsetTop) / 10;
+    const leftCoordinate = (event.pageX - event.target.offsetLeft) / 10;
+    const topCoordinate = (event.pageY - event.target.offsetTop) / 10;
 
     console.log(leftCoordinate, topCoordinate);
     setNewModalActive(true);
@@ -45,6 +43,9 @@ const MapOfCity = ({ setIsAuth }) => {
     <div
       className="map-container"
       onDoubleClick={(event) => getNewClientCoords(event)}
+      onClick={(e) =>
+        console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
+      }
     >
       <button
         className="out-button"

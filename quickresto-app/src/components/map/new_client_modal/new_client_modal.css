@@ -27,7 +27,6 @@
   border-radius: 5px;
   background-color: #fff;
   color: black;
-  width: 150px;
 }
 
 .modal-new__content h3 {
@@ -36,6 +35,8 @@
 }
 .modal-new__content p {
   margin: 5px 5px 15px 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-new__button-add {

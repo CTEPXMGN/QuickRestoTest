@@ -1,15 +1,11 @@
 .map-container {
-  min-height: 1001px;
-  min-width: 1001px;
+  min-height: 1000px;
+  min-width: 1000px;
   position: relative;
   border: 1px solid black;
   background-image: url(../../../assets/tutzing.svg);
+  background-size: contain;
 }
-
-/* .map-img {
-  width: 100%;
-  height: 100%;
-} */
 
 .out-button {
   height: 38px;
