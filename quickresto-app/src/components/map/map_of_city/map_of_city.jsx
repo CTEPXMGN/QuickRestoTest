@@ -4,7 +4,7 @@ import data from '../../../data_file/model.json';
 import Clients from '../clients/clients';
 import ClientModal from '../modal/client_modal';
 import NewClientModal from '../new_client_modal/new_client_modal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   removeUser,
   saveClientsData,
@@ -23,10 +23,6 @@ const MapOfCity = ({ setIsAuth }) => {
   const [clientsData, setClientsData] = useState(getClientsData());
   const [newClientCoords, setNewClientCoords] = useState({});
 
-  useEffect(() => {
-    // console.log(clientsData);
-  });
-
   function getNewClientCoords(event) {
     const leftCoordinate = (event.pageX - event.target.offsetLeft) / 10;
     const topCoordinate = (event.pageY - event.target.offsetTop) / 10;
@@ -42,10 +38,10 @@ const MapOfCity = ({ setIsAuth }) => {
   return (
     <div
       className="map-container"
-      onDoubleClick={(event) => getNewClientCoords(event)}
-      onClick={(e) =>
-        console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
-      }
+      // onDoubleClick={(event) => getNewClientCoords(event)}
+      // onClick={(e) =>
+      //   console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
+      // }
     >
       <button
         className="out-button"
@@ -69,14 +65,14 @@ const MapOfCity = ({ setIsAuth }) => {
         setModalData={setModalData}
         clientsData={clientsData}
       />
-      {/* <img
+      <img
         src={map}
         className="map-img"
         onDoubleClick={(event) => getNewClientCoords(event)}
         onClick={(e) => {
           console.log(e.clientX, e.clientY, e.pageX, e.pageY);
         }}
-      /> */}
+      />
       <ClientModal
         modalActive={modalActive}
         setModalActive={setModalActive}

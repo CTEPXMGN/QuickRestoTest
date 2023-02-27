@@ -9,7 +9,10 @@ const ClientModal = ({
   clientsData,
   setClientsData,
 }) => {
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEditName, setIsEditName] = useState(false);
+  const [isEditAmount, setIsEditAmount] = useState(false);
+  const [editNameValue, setEditNameValue] = useState(modalData.name);
+  const [editAmountValue, setEditAmountValue] = useState(modalData.amount);
 
   function removeClient(name) {
     const newModalData = clientsData.filter((item) => item.name != name);
@@ -17,19 +20,60 @@ const ClientModal = ({
     saveClientsData(newModalData);
   }
 
+  function changeNameValue(event) {
+    setEditNameValue(event.target.value);
+  }
+
+  function changeAmountValue(event) {
+    setEditAmountValue(event.target.value);
+  }
+
+  const inputName = (
+    <input
+      className="modal__input-name"
+      type="text"
+      value={editNameValue}
+      onBlur={() => setIsEditName(false)}
+      onChange={(event) => {
+        changeNameValue(event);
+      }}
+    />
+  );
+  const textName = (
+    <span onDoubleClick={() => setIsEditName(true)}>{modalData.name}</span>
+  );
+
+  const inputAmount = (
+    <input
+      className="modal__input-amount"
+      type="text"
+      value={editAmountValue}
+      onBlur={() => setIsEditAmount(false)}
+      onChange={(event) => {
+        changeAmountValue(event);
+      }}
+    />
+  );
+
+  const textAmount = (
+    <span onDoubleClick={() => setIsEditAmount(true)}>{modalData.amount}</span>
+  );
+
   return (
     <div
       className={modalActive ? 'modal active' : 'modal'}
-      onClick={() => setModalActive(false)}
+      onClick={() => {
+        setModalActive(false), setIsEditName(false), setIsEditAmount(false);
+      }}
     >
       <div
         className="modal__content"
         onClick={(event) => event.stopPropagation()}
       >
         <h3>Клиент</h3>
-        <p>Имя: {modalData.name}</p>
+        <p>Имя: {isEditName ? inputName : textName}</p>
 
-        <p>Кол-во: {modalData.amount}</p>
+        <p>Кол-во: {isEditAmount ? inputAmount : textAmount}</p>
         <button
           className="modal__button-remove"
           onClick={() => {

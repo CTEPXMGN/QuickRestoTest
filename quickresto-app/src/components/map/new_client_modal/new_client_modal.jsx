@@ -58,7 +58,7 @@ const NewClientModal = ({
         <p>
           Кол-во:
           <input
-            type={'number'}
+            type={'text'}
             onChange={(event) => {
               changeAmountValue(event);
             }}
