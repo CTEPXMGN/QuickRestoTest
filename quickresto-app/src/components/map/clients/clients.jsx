@@ -1,9 +1,5 @@
+import { id } from '../map_of_city/map_of_city';
 import './clients.css';
-import { nanoid } from 'nanoid';
-
-function id() {
-  return nanoid();
-}
 
 // function deliveryDetails(amount, name) {
 //   // console.log(amount, name);

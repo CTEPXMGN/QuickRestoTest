@@ -1,10 +1,11 @@
 import './map_of_city.css';
 import map from '../../../assets/tutzing.svg';
-import data from '../../../data_file/model.json';
+import initData from '../../../data_file/model.json';
 import Clients from '../clients/clients';
 import ClientModal from '../modal/client_modal';
 import NewClientModal from '../new_client_modal/new_client_modal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
 import {
   removeUser,
   saveClientsData,
@@ -12,9 +13,14 @@ import {
   hasCLientData,
 } from '../../../storage';
 
-saveClientsData(hasCLientData() ? getClientsData() : data);
+export function id() {
+  return nanoid();
+}
+const data = initData.map((item) => {
+  return { ...item, ...{ id: id() } };
+});
 
-// console.log(getClientsData());
+saveClientsData(hasCLientData() ? getClientsData() : data);
 
 const MapOfCity = ({ setIsAuth }) => {
   const [modalActive, setModalActive] = useState(false);
@@ -22,6 +28,12 @@ const MapOfCity = ({ setIsAuth }) => {
   const [modalData, setModalData] = useState({});
   const [clientsData, setClientsData] = useState(getClientsData());
   const [newClientCoords, setNewClientCoords] = useState({});
+  const [editNameValue, setEditNameValue] = useState(modalData.name);
+  const [editAmountValue, setEditAmountValue] = useState(modalData.amount);
+
+  useEffect(() => {
+    console.log(modalData, editNameValue);
+  });
 
   function getNewClientCoords(event) {
     const leftCoordinate =
@@ -90,6 +102,10 @@ const MapOfCity = ({ setIsAuth }) => {
         modalData={modalData}
         clientsData={clientsData}
         setClientsData={setClientsData}
+        editNameValue={editNameValue}
+        setEditNameValue={setEditNameValue}
+        editAmountValue={editAmountValue}
+        setEditAmountValue={setEditAmountValue}
       />
       <NewClientModal
         newModalActive={newModalActive}

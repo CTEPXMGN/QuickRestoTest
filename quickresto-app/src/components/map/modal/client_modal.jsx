@@ -8,16 +8,33 @@ const ClientModal = ({
   modalData,
   clientsData,
   setClientsData,
+  editNameValue,
+  setEditNameValue,
+  editAmountValue,
+  setEditAmountValue,
 }) => {
   const [isEditName, setIsEditName] = useState(false);
   const [isEditAmount, setIsEditAmount] = useState(false);
-  const [editNameValue, setEditNameValue] = useState(modalData.name);
-  const [editAmountValue, setEditAmountValue] = useState(modalData.amount);
+  // const [editNameValue, setEditNameValue] = useState(modalData.name);
+  // const [editAmountValue, setEditAmountValue] = useState(modalData.amount);
 
-  function removeClient(name) {
-    const newModalData = clientsData.filter((item) => item.name != name);
+  function removeClient(id) {
+    const newModalData = clientsData.filter((item) => item.id != id);
     setClientsData(newModalData);
     saveClientsData(newModalData);
+  }
+
+  function editClientData(id) {
+    console.log(id);
+    const editedClientData = clientsData.map((item) => {
+      if (item.id === id) {
+        // (item.name = editNameValue), item.amount === editAmountValue;
+        console.log(item);
+      }
+    });
+    // console.log(editedClientData);
+    // setClientsData(editedClientData);
+    // saveClientsData(editedClientData);
   }
 
   function changeNameValue(event) {
@@ -33,8 +50,11 @@ const ClientModal = ({
       className="modal__input-name"
       type="text"
       value={editNameValue}
+      // defaultValue={modalData.name}
       autoFocus={true}
-      onBlur={() => setIsEditName(false)}
+      onBlur={() => {
+        setIsEditName(false), editClientData(modalData.id);
+      }}
       onChange={(event) => {
         changeNameValue(event);
       }}
@@ -49,6 +69,7 @@ const ClientModal = ({
       className="modal__input-amount"
       type="text"
       value={editAmountValue}
+      // defaultValue={modalData.amount}
       autoFocus={true}
       onBlur={() => setIsEditAmount(false)}
       onChange={(event) => {
@@ -79,7 +100,7 @@ const ClientModal = ({
         <button
           className="modal__button-remove"
           onClick={() => {
-            removeClient(modalData.name), setModalActive(false);
+            removeClient(modalData.id), setModalActive(false);
           }}
         >
           Удалить

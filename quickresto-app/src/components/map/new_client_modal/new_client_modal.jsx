@@ -1,6 +1,7 @@
 import './new_client_modal.css';
 import { useState } from 'react';
 import { saveClientsData } from '../../../storage';
+import { id } from '../map_of_city/map_of_city';
 
 const NewClientModal = ({
   newModalActive,
@@ -15,7 +16,7 @@ const NewClientModal = ({
   function addClient() {
     if (inputName && inputAmount > 0) {
       const newClient = {
-        ...{ name: inputName, amount: inputAmount },
+        ...{ name: inputName, amount: inputAmount, id: id() },
         ...newClientCoords,
       };
       // console.log(newClient);
