@@ -24,10 +24,14 @@ const MapOfCity = ({ setIsAuth }) => {
   const [newClientCoords, setNewClientCoords] = useState({});
 
   function getNewClientCoords(event) {
-    const leftCoordinate = (event.pageX - event.target.offsetLeft) / 10;
-    const topCoordinate = (event.pageY - event.target.offsetTop) / 10;
+    const leftCoordinate =
+      ((event.pageX - event.target.parentNode.offsetLeft) * 100) /
+      event.target.offsetWidth;
+    const topCoordinate =
+      ((event.pageY - event.target.parentNode.offsetTop) * 100) /
+      event.target.offsetHeight;
 
-    console.log(leftCoordinate, topCoordinate);
+    // console.log(leftCoordinate, topCoordinate);
     setNewModalActive(true);
     setNewClientCoords({
       ...newClientCoords,
@@ -69,9 +73,16 @@ const MapOfCity = ({ setIsAuth }) => {
         src={map}
         className="map-img"
         onDoubleClick={(event) => getNewClientCoords(event)}
-        onClick={(e) => {
-          console.log(e.clientX, e.clientY, e.pageX, e.pageY);
-        }}
+        // onClick={(e) => {
+        //   console.log(
+        //     e.clientX,
+        //     e.clientY,
+        //     e.pageX,
+        //     e.pageY,
+        //     e.target.parentNode.offsetLeft,
+        //     e.target.parentNode.offsetTop
+        //   );
+        // }}
       />
       <ClientModal
         modalActive={modalActive}

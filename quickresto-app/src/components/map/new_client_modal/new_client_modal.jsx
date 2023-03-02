@@ -50,6 +50,7 @@ const NewClientModal = ({
           Имя:
           <input
             type={'text'}
+            value={inputName}
             onChange={(event) => {
               changeNameValue(event);
             }}
@@ -59,6 +60,7 @@ const NewClientModal = ({
           Кол-во:
           <input
             type={'text'}
+            value={inputAmount}
             onChange={(event) => {
               changeAmountValue(event);
             }}

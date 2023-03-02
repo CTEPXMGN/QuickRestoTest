@@ -5,9 +5,9 @@ function id() {
   return nanoid();
 }
 
-function deliveryDetails(amount, name) {
-  // console.log(amount, name);
-}
+// function deliveryDetails(amount, name) {
+//   // console.log(amount, name);
+// }
 
 const Clients = ({ setModalActive, setModalData, clientsData }) => {
   const dataOfDelivery = clientsData.map((item) => {
@@ -17,9 +17,8 @@ const Clients = ({ setModalActive, setModalData, clientsData }) => {
         className="point-of-delivery"
         style={{ top: `${item.y}%`, left: `${item.x}%` }}
         onClick={() => {
-          deliveryDetails(item.amount, item.name),
-            setModalActive(true),
-            setModalData(item);
+          // deliveryDetails(item.amount, item.name),
+          setModalData(item), setModalActive(true);
         }}
       ></div>
     );

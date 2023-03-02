@@ -33,6 +33,7 @@ const ClientModal = ({
       className="modal__input-name"
       type="text"
       value={editNameValue}
+      autoFocus={true}
       onBlur={() => setIsEditName(false)}
       onChange={(event) => {
         changeNameValue(event);
@@ -48,6 +49,7 @@ const ClientModal = ({
       className="modal__input-amount"
       type="text"
       value={editAmountValue}
+      autoFocus={true}
       onBlur={() => setIsEditAmount(false)}
       onChange={(event) => {
         changeAmountValue(event);

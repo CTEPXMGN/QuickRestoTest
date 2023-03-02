@@ -7,10 +7,12 @@
 }
 
 .auth_input-login {
+  width: 95%;
   margin-bottom: 10px;
 }
 
 .auth_input-password {
+  width: 95%;
   margin-bottom: 10px;
 }
 
