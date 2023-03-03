@@ -4,7 +4,7 @@ import initData from '../../../data_file/model.json';
 import Clients from '../clients/clients';
 import ClientModal from '../modal/client_modal';
 import NewClientModal from '../new_client_modal/new_client_modal';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import {
   removeUser,
@@ -31,10 +31,6 @@ const MapOfCity = ({ setIsAuth }) => {
   const [editNameValue, setEditNameValue] = useState('');
   const [editAmountValue, setEditAmountValue] = useState('');
 
-  useEffect(() => {
-    console.log(modalData, editNameValue);
-  });
-
   function getNewClientCoords(event) {
     const leftCoordinate =
       ((event.pageX - event.target.parentNode.offsetLeft) * 100) /
@@ -43,7 +39,6 @@ const MapOfCity = ({ setIsAuth }) => {
       ((event.pageY - event.target.parentNode.offsetTop) * 100) /
       event.target.offsetHeight;
 
-    // console.log(leftCoordinate, topCoordinate);
     setNewModalActive(true);
     setNewClientCoords({
       ...newClientCoords,
@@ -52,13 +47,7 @@ const MapOfCity = ({ setIsAuth }) => {
   }
 
   return (
-    <div
-      className="map-container"
-      // onDoubleClick={(event) => getNewClientCoords(event)}
-      // onClick={(e) =>
-      //   console.log(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
-      // }
-    >
+    <div className="map-container">
       <button
         className="out-button"
         onClick={() => {
@@ -87,16 +76,6 @@ const MapOfCity = ({ setIsAuth }) => {
         src={map}
         className="map-img"
         onDoubleClick={(event) => getNewClientCoords(event)}
-        // onClick={(e) => {
-        //   console.log(
-        //     e.clientX,
-        //     e.clientY,
-        //     e.pageX,
-        //     e.pageY,
-        //     e.target.parentNode.offsetLeft,
-        //     e.target.parentNode.offsetTop
-        //   );
-        // }}
       />
       <ClientModal
         modalActive={modalActive}

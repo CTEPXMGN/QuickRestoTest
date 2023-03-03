@@ -24,7 +24,6 @@ const Clients = ({
     );
   });
 
-  // console.log(dataOfDelivery);
   return <>{dataOfDelivery}</>;
 };
 

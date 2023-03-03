@@ -23,14 +23,12 @@ const ClientModal = ({
   }
 
   function editClientData(id) {
-    console.log(clientsData);
     const editedClientData = clientsData.map((item) => {
       if (item.id === id) {
         return { ...item, name: editNameValue, amount: editAmountValue };
       }
       return item;
     });
-    console.log(editedClientData);
     setClientsData(editedClientData);
     saveClientsData(editedClientData);
   }
@@ -48,7 +46,6 @@ const ClientModal = ({
       className="modal__input-name"
       type="text"
       value={editNameValue}
-      // defaultValue={modalData.name}
       autoFocus={true}
       onBlur={() => {
         setIsEditName(false), editClientData(modalData.id);
@@ -59,7 +56,7 @@ const ClientModal = ({
     />
   );
   const textName = (
-    <span onDoubleClick={() => setIsEditName(true)}>{modalData.name}</span>
+    <span onDoubleClick={() => setIsEditName(true)}>{editNameValue}</span>
   );
 
   const inputAmount = (
@@ -67,7 +64,6 @@ const ClientModal = ({
       className="modal__input-amount"
       type="text"
       value={editAmountValue}
-      // defaultValue={modalData.amount}
       autoFocus={true}
       onBlur={() => setIsEditAmount(false)}
       onChange={(event) => {
@@ -77,7 +73,7 @@ const ClientModal = ({
   );
 
   const textAmount = (
-    <span onDoubleClick={() => setIsEditAmount(true)}>{modalData.amount}</span>
+    <span onDoubleClick={() => setIsEditAmount(true)}>{editAmountValue}</span>
   );
 
   return (

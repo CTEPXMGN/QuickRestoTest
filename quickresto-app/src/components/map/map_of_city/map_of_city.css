@@ -1,18 +1,9 @@
 .map-container {
-  height: 1000px;
+  min-height: 800px;
   min-width: 800px;
   position: relative;
   border: 1px solid black;
-  /* background-image: url(../../../assets/tutzing.svg);
-  background-size: contain; */
 }
-
-/* .map-wrapper {
-  height: 500px;
-  width: 500px;
-  background-image: url(../../../assets/tutzing.svg);
-  background-size: contain;
-} */
 
 .map-img {
   width: 100%;

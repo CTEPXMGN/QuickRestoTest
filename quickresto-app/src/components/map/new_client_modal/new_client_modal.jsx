@@ -19,9 +19,7 @@ const NewClientModal = ({
         ...{ name: inputName, amount: inputAmount, id: id() },
         ...newClientCoords,
       };
-      // console.log(newClient);
       const newClientsData = [...clientsData, newClient];
-      // console.log(newClientsData);
       setClientsData(newClientsData);
       saveClientsData(newClientsData);
     } else {
