@@ -15,8 +15,6 @@ const ClientModal = ({
 }) => {
   const [isEditName, setIsEditName] = useState(false);
   const [isEditAmount, setIsEditAmount] = useState(false);
-  // const [editNameValue, setEditNameValue] = useState(modalData.name);
-  // const [editAmountValue, setEditAmountValue] = useState(modalData.amount);
 
   function removeClient(id) {
     const newModalData = clientsData.filter((item) => item.id != id);
@@ -25,16 +23,16 @@ const ClientModal = ({
   }
 
   function editClientData(id) {
-    console.log(id);
+    console.log(clientsData);
     const editedClientData = clientsData.map((item) => {
       if (item.id === id) {
-        // (item.name = editNameValue), item.amount === editAmountValue;
-        console.log(item);
+        return { ...item, name: editNameValue, amount: editAmountValue };
       }
+      return item;
     });
-    // console.log(editedClientData);
-    // setClientsData(editedClientData);
-    // saveClientsData(editedClientData);
+    console.log(editedClientData);
+    setClientsData(editedClientData);
+    saveClientsData(editedClientData);
   }
 
   function changeNameValue(event) {

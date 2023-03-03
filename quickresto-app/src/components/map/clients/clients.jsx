@@ -1,11 +1,13 @@
 import { id } from '../map_of_city/map_of_city';
 import './clients.css';
 
-// function deliveryDetails(amount, name) {
-//   // console.log(amount, name);
-// }
-
-const Clients = ({ setModalActive, setModalData, clientsData }) => {
+const Clients = ({
+  setModalActive,
+  setModalData,
+  clientsData,
+  setEditNameValue,
+  setEditAmountValue,
+}) => {
   const dataOfDelivery = clientsData.map((item) => {
     return (
       <div
@@ -13,8 +15,10 @@ const Clients = ({ setModalActive, setModalData, clientsData }) => {
         className="point-of-delivery"
         style={{ top: `${item.y}%`, left: `${item.x}%` }}
         onClick={() => {
-          // deliveryDetails(item.amount, item.name),
-          setModalData(item), setModalActive(true);
+          setModalData(item),
+            setModalActive(true),
+            setEditNameValue(item.name),
+            setEditAmountValue(item.amount);
         }}
       ></div>
     );

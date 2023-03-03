@@ -28,8 +28,8 @@ const MapOfCity = ({ setIsAuth }) => {
   const [modalData, setModalData] = useState({});
   const [clientsData, setClientsData] = useState(getClientsData());
   const [newClientCoords, setNewClientCoords] = useState({});
-  const [editNameValue, setEditNameValue] = useState(modalData.name);
-  const [editAmountValue, setEditAmountValue] = useState(modalData.amount);
+  const [editNameValue, setEditNameValue] = useState('');
+  const [editAmountValue, setEditAmountValue] = useState('');
 
   useEffect(() => {
     console.log(modalData, editNameValue);
@@ -80,6 +80,8 @@ const MapOfCity = ({ setIsAuth }) => {
         setModalActive={setModalActive}
         setModalData={setModalData}
         clientsData={clientsData}
+        setEditNameValue={setEditNameValue}
+        setEditAmountValue={setEditAmountValue}
       />
       <img
         src={map}
