@@ -50,19 +50,19 @@ const MapOfCity = ({ setIsAuth }) => {
 
   return (
     <div className="map-container">
-      {/* <button
+      <button
         className="out-button"
         onClick={() => {
           setIsAuth(false), removeUser();
         }}
       >
         Выйти
-      </button> */}
-      <Button
+      </button>
+      {/* <Button
         buttonName={BUTTON_NAMES.logout}
         setIsAuth={setIsAuth}
         removeUser={removeUser}
-      />
+      /> */}
       <button
         className="clear-button"
         onClick={() => {
