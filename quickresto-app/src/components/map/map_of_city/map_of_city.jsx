@@ -58,11 +58,6 @@ const MapOfCity = ({ setIsAuth }) => {
       >
         Выйти
       </button>
-      {/* <Button
-        buttonName={BUTTON_NAMES.logout}
-        setIsAuth={setIsAuth}
-        removeUser={removeUser}
-      /> */}
       <button
         className="clear-button"
         onClick={() => {
