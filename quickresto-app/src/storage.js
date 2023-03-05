@@ -1,5 +1,7 @@
 import { TEST_USER } from './variables';
 
+const CLIENTS_DATA = 'clientsData';
+
 export const saveUser = (login, password) => {
   localStorage.setItem(login, JSON.stringify(password));
 };
@@ -24,17 +26,17 @@ export const removeUser = () => {
 };
 
 export const saveClientsData = (data) => {
-  localStorage.setItem('clientsData', JSON.stringify(data));
+  localStorage.setItem(CLIENTS_DATA, JSON.stringify(data));
 };
 
 export const getClientsData = () => {
-  if (localStorage.getItem('clientsData')) {
-    return JSON.parse(localStorage.getItem('clientsData'));
+  if (localStorage.getItem(CLIENTS_DATA)) {
+    return JSON.parse(localStorage.getItem(CLIENTS_DATA));
   }
 };
 
 export const hasCLientData = () => {
-  if (localStorage.getItem('clientsData')) {
+  if (localStorage.getItem(CLIENTS_DATA)) {
     return true;
   }
   return false;

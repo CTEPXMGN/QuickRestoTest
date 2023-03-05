@@ -1,6 +1,6 @@
 .map-container {
-  min-height: 800px;
-  min-width: 800px;
+  height: 1000px;
+  width: 1000px;
   position: relative;
   border: 1px solid black;
 }

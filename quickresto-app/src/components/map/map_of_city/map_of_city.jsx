@@ -12,6 +12,8 @@ import {
   getClientsData,
   hasCLientData,
 } from '../../../storage';
+import { BUTTON_NAMES } from '../../../variables';
+import Button from '../../button/button';
 
 export function id() {
   return nanoid();
@@ -48,14 +50,19 @@ const MapOfCity = ({ setIsAuth }) => {
 
   return (
     <div className="map-container">
-      <button
+      {/* <button
         className="out-button"
         onClick={() => {
           setIsAuth(false), removeUser();
         }}
       >
         Выйти
-      </button>
+      </button> */}
+      <Button
+        buttonName={BUTTON_NAMES.logout}
+        setIsAuth={setIsAuth}
+        removeUser={removeUser}
+      />
       <button
         className="clear-button"
         onClick={() => {
