@@ -12,8 +12,6 @@ import {
   getClientsData,
   hasCLientData,
 } from '../../../storage';
-import { BUTTON_NAMES } from '../../../variables';
-import Button from '../../button/button';
 
 export function id() {
   return nanoid();
