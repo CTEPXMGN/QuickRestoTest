@@ -27,16 +27,14 @@ const AuthForm = ({ isAuth, setIsAuth }) => {
     }
   }
 
+  function handlerSubmitLogin() {
+    return authSubmit(), setIsAuth(isAuth ? true : false);
+  }
+
   return (
     <div className="auth_container">
       <p>Авторизация</p>
-      <form
-        action="submit"
-        onSubmit={() => {
-          authSubmit();
-          setIsAuth(isAuth ? true : false);
-        }}
-      >
+      <form action="submit" onSubmit={handlerSubmitLogin}>
         <input
           type="text"
           className="auth_input-login"

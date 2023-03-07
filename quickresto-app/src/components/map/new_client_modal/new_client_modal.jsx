@@ -16,7 +16,9 @@ const NewClientModal = ({
   function addClient() {
     if (inputName && inputAmount > 0) {
       const newClient = {
-        ...{ name: inputName, amount: inputAmount, id: id() },
+        name: inputName,
+        amount: inputAmount,
+        id: id(),
         ...newClientCoords,
       };
       const newClientsData = [...clientsData, newClient];
@@ -33,6 +35,15 @@ const NewClientModal = ({
 
   function changeAmountValue(event) {
     setInputAmount(event.target.value);
+  }
+
+  function handlerClickAdd() {
+    return (
+      addClient(),
+      setInputName(''),
+      setInputAmount(''),
+      setNewModalActive(false)
+    );
   }
 
   return (
@@ -65,15 +76,7 @@ const NewClientModal = ({
             }}
           />
         </p>
-        <button
-          className="modal-new__button-add"
-          onClick={() => {
-            addClient(),
-              setInputName(''),
-              setInputAmount(''),
-              setNewModalActive(false);
-          }}
-        >
+        <button className="modal-new__button-add" onClick={handlerClickAdd}>
           Добавить
         </button>
       </div>

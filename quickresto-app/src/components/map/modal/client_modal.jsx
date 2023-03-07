@@ -41,15 +41,28 @@ const ClientModal = ({
     setEditAmountValue(event.target.value);
   }
 
+  function handlerClickRemove() {
+    return removeClient(modalData.id), setModalActive(false);
+  }
+
+  function handlerClickCloseModal() {
+    return setModalActive(false), setIsEditName(false), setIsEditAmount(false);
+  }
+
+  function handlerBlurEditName() {
+    return setIsEditName(false), editClientData(modalData.id);
+  }
+
+  function handlerBlurEditAmount() {
+    return setIsEditAmount(false), editClientData(modalData.id);
+  }
   const inputName = (
     <input
       className="modal__input-name"
       type="text"
       value={editNameValue}
       autoFocus={true}
-      onBlur={() => {
-        setIsEditName(false), editClientData(modalData.id);
-      }}
+      onBlur={handlerBlurEditName}
       onChange={(event) => {
         changeNameValue(event);
       }}
@@ -65,7 +78,7 @@ const ClientModal = ({
       type="text"
       value={editAmountValue}
       autoFocus={true}
-      onBlur={() => setIsEditAmount(false)}
+      onBlur={handlerBlurEditAmount}
       onChange={(event) => {
         changeAmountValue(event);
       }}
@@ -79,9 +92,7 @@ const ClientModal = ({
   return (
     <div
       className={modalActive ? 'modal active' : 'modal'}
-      onClick={() => {
-        setModalActive(false), setIsEditName(false), setIsEditAmount(false);
-      }}
+      onClick={handlerClickCloseModal}
     >
       <div
         className="modal__content"
@@ -91,12 +102,7 @@ const ClientModal = ({
         <p>Имя: {isEditName ? inputName : textName}</p>
 
         <p>Кол-во: {isEditAmount ? inputAmount : textAmount}</p>
-        <button
-          className="modal__button-remove"
-          onClick={() => {
-            removeClient(modalData.id), setModalActive(false);
-          }}
-        >
+        <button className="modal__button-remove" onClick={handlerClickRemove}>
           Удалить
         </button>
       </div>

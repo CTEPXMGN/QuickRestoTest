@@ -46,23 +46,20 @@ const MapOfCity = ({ setIsAuth }) => {
     });
   }
 
+  function handlerClickLogout() {
+    return setIsAuth(false), removeUser();
+  }
+
+  function handlerClickReset() {
+    return setClientsData(data), saveClientsData(data);
+  }
+
   return (
     <div className="map-container">
-      <button
-        className="out-button"
-        onClick={() => {
-          setIsAuth(false), removeUser();
-        }}
-      >
+      <button className="out-button" onClick={handlerClickLogout}>
         Выйти
       </button>
-      <button
-        className="clear-button"
-        onClick={() => {
-          setClientsData(data);
-          saveClientsData(data);
-        }}
-      >
+      <button className="clear-button" onClick={handlerClickReset}>
         Сброcить изменения
       </button>
       <Clients

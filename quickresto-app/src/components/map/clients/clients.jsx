@@ -9,17 +9,21 @@ const Clients = ({
   setEditAmountValue,
 }) => {
   const dataOfDelivery = clientsData.map((item) => {
+    function handlerClickPoint() {
+      return (
+        setModalData(item),
+        setModalActive(true),
+        setEditNameValue(item.name),
+        setEditAmountValue(item.amount)
+      );
+    }
+
     return (
       <div
         key={id()}
         className="point-of-delivery"
         style={{ top: `${item.y}%`, left: `${item.x}%` }}
-        onClick={() => {
-          setModalData(item),
-            setModalActive(true),
-            setEditNameValue(item.name),
-            setEditAmountValue(item.amount);
-        }}
+        onClick={handlerClickPoint}
       ></div>
     );
   });
