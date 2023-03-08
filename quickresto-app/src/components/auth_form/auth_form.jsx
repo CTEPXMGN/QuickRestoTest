@@ -1,10 +1,15 @@
 import './auth_form.css';
+import md5 from 'js-md5';
 import { useState } from 'react';
 import { saveUser } from '../../storage';
 import { TEST_USER } from '../../variables';
 
 const checkUser = (loginValue, passwordValue) => {
-  return loginValue === TEST_USER.login && passwordValue === TEST_USER.password;
+  const passwordValueHash = md5(passwordValue);
+
+  return (
+    loginValue === TEST_USER.login && passwordValueHash === TEST_USER.password
+  );
 };
 
 const AuthForm = ({ isAuth, setIsAuth }) => {
@@ -47,9 +52,7 @@ const AuthForm = ({ isAuth, setIsAuth }) => {
           type="password"
           className="auth_input-password"
           placeholder="пароль"
-          onChange={(event) => {
-            changePasswordValue(event);
-          }}
+          onChange={changePasswordValue}
         />
         <button className="auth_button">Войти</button>
       </form>
