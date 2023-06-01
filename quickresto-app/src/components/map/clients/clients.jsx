@@ -21,7 +21,7 @@ const Clients = ({
     return (
       <div
         key={id()}
-        className="point-of-delivery"
+        className="delivery-point"
         style={{ top: `${item.y}%`, left: `${item.x}%` }}
         onClick={handlerClickPoint}
       ></div>

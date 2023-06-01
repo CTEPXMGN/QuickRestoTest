@@ -44,9 +44,7 @@ const AuthForm = ({ isAuth, setIsAuth }) => {
           type="text"
           className="auth_input-login"
           placeholder="логин"
-          onChange={(event) => {
-            changeLoginValue(event);
-          }}
+          onChange={changeLoginValue}
         />
         <input
           type="password"

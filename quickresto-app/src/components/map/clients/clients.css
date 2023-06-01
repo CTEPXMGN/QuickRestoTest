@@ -1,7 +1,7 @@
-.point-of-delivery {
+.delivery-point {
   width: 0.7em;
   height: 0.7em;
-  background-color: red;
+  background-color: rgb(211, 0, 0);
   border: 1px solid red;
   border-radius: 50%;
   position: absolute;
