@@ -15,6 +15,7 @@ const checkUser = (loginValue, passwordValue) => {
 const AuthForm = ({ isAuth, setIsAuth }) => {
   const [loginValue, setLoginValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const [userValid, setUserValid] = useState(false);
 
   function changeLoginValue(event) {
     setLoginValue(event.target.value);
@@ -28,7 +29,7 @@ const AuthForm = ({ isAuth, setIsAuth }) => {
     if (checkUser(loginValue, passwordValue)) {
       saveUser(loginValue, passwordValue);
     } else {
-      alert('Логин или пароль введены неверно.');
+      setUserValid(true);
     }
   }
 
@@ -37,22 +38,27 @@ const AuthForm = ({ isAuth, setIsAuth }) => {
   }
 
   return (
-    <div className="auth_container">
-      <p>Авторизация</p>
+    <div className="auth__container">
+      <h3 className="auth__title">Авторизация</h3>
       <form action="submit" onSubmit={handlerSubmitLogin}>
         <input
           type="text"
-          className="auth_input-login"
+          className="auth__input-login"
           placeholder="логин"
           onChange={changeLoginValue}
         />
         <input
           type="password"
-          className="auth_input-password"
+          className="auth__input-password"
           placeholder="пароль"
           onChange={changePasswordValue}
         />
-        <button className="auth_button">Войти</button>
+        {userValid ? (
+          <p className="auth__message">Неверный логин или пароль</p>
+        ) : (
+          <></>
+        )}
+        <button className="auth__button">Войти</button>
       </form>
     </div>
   );
