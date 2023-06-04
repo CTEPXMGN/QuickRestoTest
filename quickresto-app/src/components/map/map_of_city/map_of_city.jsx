@@ -60,7 +60,7 @@ const MapOfCity = ({ setIsAuth }) => {
         Выйти
       </button>
       <button className="clear-button" onClick={handlerClickReset}>
-        Сброcить изменения
+        Сброc
       </button>
       <Clients
         setModalActive={setModalActive}
