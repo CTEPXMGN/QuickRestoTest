@@ -22,7 +22,10 @@ const Clients = ({
       <div
         key={id()}
         className="delivery-point"
-        style={{ top: `${item.y}%`, left: `${item.x}%` }}
+        style={{
+          top: `calc(${item.y}% - 0.7em)`,
+          left: `calc(${item.x}% - 0.7em)`,
+        }}
         onClick={handlerClickPoint}
       ></div>
     );
