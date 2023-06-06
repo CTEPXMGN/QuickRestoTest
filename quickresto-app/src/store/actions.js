@@ -1,5 +1,6 @@
 import * as actions from './actionTypes';
 
+// РЕВЬЮ: в целом, не используется в проекте
 export const addPoint = (point) => ({
   type: actions.POINT_ADD,
   payload: point,
