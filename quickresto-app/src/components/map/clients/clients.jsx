@@ -20,6 +20,7 @@ const Clients = ({
 
     return (
       <div
+          // РЕВЬЮ: айдишник же генерится для каждого айтема свой, можно брать через item.id
         key={id()}
         className="delivery-point"
         style={{

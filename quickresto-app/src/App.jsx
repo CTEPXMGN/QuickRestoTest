@@ -10,7 +10,8 @@ function App() {
   const content = isAuth ? (
     <MapOfCity setIsAuth={setIsAuth} />
   ) : (
-    <AuthForm isAuth={isAuth} setIsAuth={setIsAuth} />
+      // РЕВЬЮ: можно ли без передачи пропов понимать, меняется ли isAuth? Наверняка, есть какие-то хуки
+      <AuthForm isAuth={isAuth} setIsAuth={setIsAuth} />
   );
 
   return <div className="App">{content}</div>;

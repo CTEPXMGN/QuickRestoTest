@@ -17,6 +17,7 @@ export function id() {
   return nanoid();
 }
 const data = initData.map((item) => {
+    // РЕВЬЮ: можно ли упростить?
   return { ...item, ...{ id: id() } };
 });
 
@@ -47,10 +48,12 @@ const MapOfCity = ({ setIsAuth }) => {
   }
 
   function handlerClickLogout() {
+      // РЕВЬЮ: функция ничего не возвращает, но есть return
     return setIsAuth(false), removeUser();
   }
 
   function handlerClickReset() {
+      // РЕВЬЮ: функция ничего не возвращает, но есть return
     return setClientsData(data), saveClientsData(data);
   }
 
@@ -74,6 +77,11 @@ const MapOfCity = ({ setIsAuth }) => {
         className="map-img"
         onDoubleClick={(event) => getNewClientCoords(event)}
       />
+        {/* РЕВЬЮ: напишу здесь, но касается обеих модалок.
+        По твоей реализации модалка всегда активна, меняется лишь только ее опасити.
+        В лучших же домах Парижа используют условный рендеринг компонента.
+        К тому же передается куча пропов, которые можно не передавать.
+        И вопрос, должны ли это быть 2 разные модалки? */}
       <ClientModal
         modalActive={modalActive}
         setModalActive={setModalActive}
